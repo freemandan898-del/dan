@@ -1,0 +1,67 @@
+/* Minimal stacked-word landing page (GitHub Pages ready)
+   - Centers content, large type, generous whitespace
+   - Dark/light via prefers-color-scheme
+*/
+:root{
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b6b6b;
+  --pad: clamp(16px, 3vw, 48px);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b0b0c;
+    --fg: #e8e8ea;
+    --muted: #9a9aa3;
+  }
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap{
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--pad);
+}
+
+.stack{
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  font-size: clamp(32px, 8vw, 128px);
+  letter-spacing: -0.02em;
+  line-height: .95;
+}
+.stack span{ display: block; }
+
+.links{
+  margin-top: clamp(16px, 2.6vw, 40px);
+  text-align: center;
+}
+.links a{
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--fg) 20%, transparent);
+  padding-bottom: 2px;
+}
+.links a:hover{
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
